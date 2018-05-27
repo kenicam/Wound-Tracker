@@ -238,6 +238,76 @@ wound_container:show()</script>
                 </regexCodePropertyList>
             </Trigger>
         </Trigger>
+        <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+            <name>Health</name>
+            <script>wound_health_current, wound_health_max = tonumber(matches[2]), tonumber(matches[3])
+local percent = math.floor((100/tonumber(matches[3])) * tonumber(matches[2]))
+wound_hp_bar:setValue(wound_health_current, wound_health_max, percent..&quot;%&quot;)
+wound_bleeding:echo(&quot;0&quot;)
+wound_bruising:echo(&quot;0&quot;)</script>
+            <triggerType>0</triggerType>
+            <conditonLineDelta>0</conditonLineDelta>
+            <mStayOpen>0</mStayOpen>
+            <mCommand></mCommand>
+            <packageName></packageName>
+            <mFgColor>#ff0000</mFgColor>
+            <mBgColor>#ffff00</mBgColor>
+            <mSoundFile></mSoundFile>
+            <colorTriggerFgColor>#000000</colorTriggerFgColor>
+            <colorTriggerBgColor>#000000</colorTriggerBgColor>
+            <regexCodeList>
+                <string>^\w+\'s health stands at (\d+)\/(\d+)\.$</string>
+                <string>^You glance over \w+ and see that \w+ health is at (\d+)\/(\d+)\.$</string>
+            </regexCodeList>
+            <regexCodePropertyList>
+                <integer>0</integer>
+                <integer>0</integer>
+            </regexCodePropertyList>
+        </Trigger>
+        <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+            <name>bleeding</name>
+            <script>wound_bleeding:echo(&quot;&lt;center&gt;&quot;..matches[2]..&quot;&lt;/center&gt;&quot;)</script>
+            <triggerType>0</triggerType>
+            <conditonLineDelta>0</conditonLineDelta>
+            <mStayOpen>0</mStayOpen>
+            <mCommand></mCommand>
+            <packageName></packageName>
+            <mFgColor>#ff0000</mFgColor>
+            <mBgColor>#ffff00</mBgColor>
+            <mSoundFile></mSoundFile>
+            <colorTriggerFgColor>#000000</colorTriggerFgColor>
+            <colorTriggerBgColor>#000000</colorTriggerBgColor>
+            <regexCodeList>
+                <string>^He is bleeding for (\d+) health\.$</string>
+                <string>^She is bleeding for (\d+) health\.$</string>
+            </regexCodeList>
+            <regexCodePropertyList>
+                <integer>1</integer>
+                <integer>1</integer>
+            </regexCodePropertyList>
+        </Trigger>
+        <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+            <name>New Trigger</name>
+            <script>wound_bruising:echo(&quot;&lt;center&gt;&quot;..matches[2]..&quot;&lt;/center&gt;&quot;)</script>
+            <triggerType>0</triggerType>
+            <conditonLineDelta>0</conditonLineDelta>
+            <mStayOpen>0</mStayOpen>
+            <mCommand></mCommand>
+            <packageName></packageName>
+            <mFgColor>#ff0000</mFgColor>
+            <mBgColor>#ffff00</mBgColor>
+            <mSoundFile></mSoundFile>
+            <colorTriggerFgColor>#000000</colorTriggerFgColor>
+            <colorTriggerBgColor>#000000</colorTriggerBgColor>
+            <regexCodeList>
+                <string>^He is bruised for (\d+) health\.$</string>
+                <string>^She is bruised for (\d+) health\.$</string>
+            </regexCodeList>
+            <regexCodePropertyList>
+                <integer>1</integer>
+                <integer>1</integer>
+            </regexCodePropertyList>
+        </Trigger>
     </TriggerPackage>
     <TimerPackage>
         <Timer isActive="no" isFolder="no" isTempTimer="no" isOffsetTimer="no">
@@ -285,7 +355,7 @@ windowpositions = {
 	wound_y = 50,
 
 	wound_width = 400,
-	wound_height = 300,
+	wound_height = 600,
 
 	wound_start_x = nil,
 	wound_start_y = nil,
@@ -368,7 +438,7 @@ wound_hbox1 = Geyser.HBox:new({
 	name = &quot;wound_hbox1&quot;,
 	x = 0, y = &quot;8%&quot;,
 	width = &quot;100%&quot;,
-	height = &quot;23%&quot;,
+	height = &quot;18.4%&quot;,
 }, wound_container)
 
 wound_head = Geyser.Label:new({
@@ -387,9 +457,9 @@ wound_head:setStyleSheet([[
 
 wound_hbox2 = Geyser.HBox:new({
 	name = &quot;wound_hbox2&quot;,
-	x = 0, y = &quot;31%&quot;,
+	x = 0, y = &quot;26.4%&quot;,
 	width = &quot;100%&quot;,
-	height = &quot;23%&quot;,
+	height = &quot;18.4%&quot;,
 }, wound_container)
 
 wound_chest = Geyser.Label:new({
@@ -422,9 +492,9 @@ wound_gut:setStyleSheet([[
 
 wound_hbox3 = Geyser.HBox:new({
 	name = &quot;wound_hbox3&quot;,
-	x = 0, y = &quot;54%&quot;,
+	x = 0, y = &quot;44.8%&quot;,
 	width = &quot;100%&quot;,
-	height = &quot;23%&quot;,
+	height = &quot;18.4%&quot;,
 }, wound_container)
 
 wound_leftarm = Geyser.Label:new({
@@ -457,9 +527,9 @@ wound_rightarm:setStyleSheet([[
 
 wound_hbox4 = Geyser.HBox:new({
 	name = &quot;wound_hbox4&quot;,
-	x = 0, y = &quot;77%&quot;,
+	x = 0, y = &quot;63.2%&quot;,
 	width = &quot;100%&quot;,
-	height = &quot;23%&quot;,
+	height = &quot;18.4%&quot;,
 }, wound_container)
 
 wound_leftleg = Geyser.Label:new({
@@ -485,6 +555,62 @@ wound_rightleg = Geyser.Label:new({
 wound_rightleg:setStyleSheet([[
 	background-color: ]]..button_color..[[;
   border-width: 1px;
+  border-style: solid;
+  border-color: ]]..border_color..[[;
+  border-radius: 2px;
+]])
+
+
+
+wound_vbox1 = Geyser.HBox:new({
+	name = &quot;wound_vbox1&quot;,
+	x = 0, y = &quot;81.6%&quot;,
+	width = &quot;100%&quot;,
+	height = &quot;25%&quot;,
+}, wound_container)
+
+wound_hp_bar = Geyser.Gauge:new({
+	name = &quot;wound_hp_bar&quot;,
+	x = 0, y = 0,
+	width = &quot;100%&quot;, height = &quot;50%&quot;,
+}, wound_vbox1)
+wound_hp_bar.front:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f04141, stop: 0.1 #ef2929, stop: 0.49 #cc0000, stop: 0.5 #a40000, stop: 1 #cc0000);
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-bottom: 1px black solid;
+    border-radius: 4;
+    padding: 3px;]])
+wound_hp_bar.back:setStyleSheet([[background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #bd3333, stop: 0.1 #bd2020, stop: 0.49 #990000, stop: 0.5 #700000, stop: 1 #990000);
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 2;
+    padding: 3px;]])
+		
+wound_hp_bar:setValue(0,100, &quot;0%&quot;)
+
+wound_bleeding = Geyser.Label:new({
+	name = &quot;wound_bleeding&quot;,
+	fgColor = text_color,
+	message = [[&lt;center&gt;0&lt;/center&gt;]]
+	
+}, wound_vbox1)
+wound_bleeding:setStyleSheet([[
+	background-color: ]]..&quot;red&quot;..[[;
+  border-width: 2px;
+  border-style: solid;
+  border-color: ]]..border_color..[[;
+  border-radius: 2px;
+]])
+wound_bruising = Geyser.Label:new({
+	name = &quot;wound_bruising&quot;,
+	fgColor = text_color,
+	message = [[&lt;center&gt;0&lt;/center&gt;]]
+	
+}, wound_vbox1)
+wound_bruising:setStyleSheet([[
+	background-color: ]]..&quot;maroon&quot;..[[;
+  border-width: 2px;
   border-style: solid;
   border-color: ]]..border_color..[[;
   border-radius: 2px;
