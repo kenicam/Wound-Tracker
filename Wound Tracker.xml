@@ -260,8 +260,8 @@ wound_bruising:echo(&quot;0&quot;)</script>
                 <string>^You glance over \w+ and see that \w+ health is at (\d+)\/(\d+)\.$</string>
             </regexCodeList>
             <regexCodePropertyList>
-                <integer>0</integer>
-                <integer>0</integer>
+                <integer>1</integer>
+                <integer>1</integer>
             </regexCodePropertyList>
         </Trigger>
         <Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
